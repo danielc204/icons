@@ -142,18 +142,29 @@
       "book-open": "https://img.icons8.com/ios/452/book-open.png"
     };
 
-    document.querySelectorAll('.icon-option').forEach(item => {
-      item.addEventListener('click', () => {
-        // הסתר את כל האייקונים הנסתרים
-        document.querySelectorAll('.hidden-icon').forEach(hiddenItem => {
-          hiddenItem.classList.remove('hidden-icon');
-        });
-        // הוסף/הסר את הקטגוריה שנבחרה
-        if (item.classList.contains('selected')) {
-          item.classList.remove('selected');
-        } else {
-          item.classList.add('selected');
+    const allIcons = document.querySelectorAll('.icon-option');
+    const otherBtn = document.getElementById('otherBtn');
+    const hiddenIcons = document.querySelectorAll('.hidden-icon');
+
+    allIcons.forEach(icon => {
+      icon.addEventListener('click', () => {
+        const selected = icon.getAttribute('data-value');
+
+        if (selected === 'other') {
+          hiddenIcons.forEach(icon => {
+            icon.style.display = (icon.style.display === "flex") ? "none" : "flex";
+          });
+          return;
         }
+
+        allIcons.forEach(i => i.classList.remove('selected'));
+        icon.classList.add('selected');
+
+        const iconURL = iconLinks[selected] || "";
+        console.log("Selected icon:", selected);
+        console.log("Icon URL:", iconURL);
+        window.parent.postMessage(iconURL, "*");
+        alert("כתובת האייקון: " + iconURL);
       });
     });
   </script>
