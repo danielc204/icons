@@ -103,17 +103,29 @@
     const hiddenIcons = document.querySelectorAll('.hidden-icon');
 
     const iconLinks = {
-      "home": "https://img.icons8.com/ios/452/home.png",
-      "briefcase": "https://img.icons8.com/ios/452/briefcase.png",
-      "users": "https://img.icons8.com/ios/452/users.png",
-      "money-bill": "https://img.icons8.com/ios/452/money-bill.png",
-      "heartbeat": "https://img.icons8.com/ios/452/heartbeat.png",
-      "car": "https://img.icons8.com/ios/452/car.png",
-      "book": "https://img.icons8.com/ios/452/book.png",
-      "utensils": "https://img.icons8.com/ios/452/utensils.png",
-      "dumbbell": "https://img.icons8.com/ios/452/dumbbell.png",
-      "other": "https://img.icons8.com/ios/452/ellipsis-h.png"
-      // ניתן להוסיף עוד קישורים בהתאם
+      "home": "https://fontawesome.com/icons/home",
+      "briefcase": "https://fontawesome.com/icons/briefcase",
+      "users": "https://fontawesome.com/icons/users",
+      "money-bill": "https://fontawesome.com/icons/money-bill",
+      "heartbeat": "https://fontawesome.com/icons/heartbeat",
+      "car": "https://fontawesome.com/icons/car",
+      "book": "https://fontawesome.com/icons/book",
+      "utensils": "https://fontawesome.com/icons/utensils",
+      "dumbbell": "https://fontawesome.com/icons/dumbbell",
+      "user-check": "https://fontawesome.com/icons/user-check",
+      "file-alt": "https://fontawesome.com/icons/file-alt",
+      "hand-paper": "https://fontawesome.com/icons/hand-paper",
+      "paperclip": "https://fontawesome.com/icons/paperclip",
+      "calendar-alt": "https://fontawesome.com/icons/calendar-alt",
+      "clipboard-check": "https://fontawesome.com/icons/clipboard-check",
+      "bullhorn": "https://fontawesome.com/icons/bullhorn",
+      "clock": "https://fontawesome.com/icons/clock",
+      "edit": "https://fontawesome.com/icons/edit",
+      "check-circle": "https://fontawesome.com/icons/check-circle",
+      "project-diagram": "https://fontawesome.com/icons/project-diagram",
+      "clipboard": "https://fontawesome.com/icons/clipboard",
+      "sticky-note": "https://fontawesome.com/icons/sticky-note",
+      "lightbulb": "https://fontawesome.com/icons/lightbulb"
     };
 
     allIcons.forEach(icon => {
@@ -129,7 +141,7 @@
         
         // שליחה להורה
         window.parent.postMessage(iconURL, "*");
-         alert("כתובת האייקון: " + iconURL);
+        alert("כתובת האייקון: " + iconURL);
       });
     });
 
