@@ -1,175 +1,87 @@
-<html lang="he" dir="rtl">
+<!DOCTYPE html>
+<html lang="he">
 <head>
   <meta charset="UTF-8">
-  <title>בחירת סמליל</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>אייקונים</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background-color: #f9f9f9;
-      direction: rtl;
-      text-align: center;
-      height: 100%;
-      margin: 0;
-    }
-
-    h2 {
-      margin-bottom: 20px;
-    }
-
     .icon-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      height: calc(100% - 60px);
-      overflow-y: auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 20px;
     }
 
     .icon-option {
-      border: 2px solid transparent;
-      border-radius: 12px;
-      padding: 10px;
-      cursor: pointer;
-      transition: border-color 0.3s ease;
-      background-color: white;
-      width: 100px;
-      height: 110px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-    }
-
-    .icon-option:hover {
-      border-color: #666;
-    }
-
-    .icon-option.selected {
-      border-color: #007bff;
-      background-color: #e8f0ff;
+      text-align: center;
     }
 
     .icon-option img {
       width: 40px;
       height: 40px;
+      margin-bottom: 5px;
     }
 
     .icon-label {
       font-size: 14px;
-      margin-top: 6px;
       color: #333;
     }
 
     .hidden-icon {
       display: none;
     }
+
+    .icon-grid.expanded .hidden-icon {
+      display: block;
+    }
   </style>
 </head>
 <body>
 
-  <h2>בחירת סמליל</h2>
+<div class="icon-grid" id="iconGrid">
+  <!-- סמלים ראשיים -->
+  <div class="icon-option" data-value="home"><img src="https://img.icons8.com/ios/452/home.png" alt="בית"><div class="icon-label">בית</div></div>
+  <div class="icon-option" data-value="briefcase"><img src="https://img.icons8.com/ios/452/briefcase.png" alt="עבודה"><div class="icon-label">עבודה</div></div>
+  <div class="icon-option" data-value="users"><img src="https://img.icons8.com/ios/452/users.png" alt="חברים"><div class="icon-label">חברים</div></div>
+  <div class="icon-option hidden-icon" data-value="finance"><img src="https://img.icons8.com/ios/452/receive-cash.png" alt="פיננסים"><div class="icon-label">פיננסים</div></div>
+  <div class="icon-option" data-value="heartbeat"><img src="https://img.icons8.com/ios/452/heartbeat.png" alt="בריאות"><div class="icon-label">בריאות</div></div>
+  <div class="icon-option" data-value="car"><img src="https://img.icons8.com/ios/452/car.png" alt="רכב"><div class="icon-label">רכב</div></div>
+  <div class="icon-option" data-value="book"><img src="https://img.icons8.com/ios/452/book.png" alt="לימודים"><div class="icon-label">לימודים</div></div>
+  <div class="icon-option" data-value="utensils"><img src="https://img.icons8.com/ios/452/utensils.png" alt="אוכל"><div class="icon-label">אוכל</div></div>
+  <div class="icon-option" data-value="dumbbell"><img src="https://img.icons8.com/ios/452/dumbbell.png" alt="ספורט"><div class="icon-label">ספורט</div></div>
+  <div class="icon-option" data-value="other" id="otherBtn"><img src="https://img.icons8.com/ios/452/ellipsis-h.png" alt="עוד"><div class="icon-label">עוד</div></div>
 
-  <div class="icon-grid" id="iconGrid">
-    <!-- סמלים ראשיים -->
-    <div class="icon-option" data-value="home"><img src="https://img.icons8.com/ios/452/home.png" alt="בית"><div class="icon-label">בית</div></div>
-    <div class="icon-option" data-value="briefcase"><img src="https://img.icons8.com/ios/452/briefcase.png" alt="עבודה"><div class="icon-label">עבודה</div></div>
-    <div class="icon-option" data-value="users"><img src="https://img.icons8.com/ios/452/users.png" alt="חברים"><div class="icon-label">חברים</div></div>
-    <div class="icon-option hidden-icon" data-value="finance"><img src="https://img.icons8.com/ios/452/receive-cash.png" alt="פיננסים"><div class="icon-label">פיננסים</div></div>
-    <div class="icon-option" data-value="heartbeat"><img src="https://img.icons8.com/ios/452/heartbeat.png" alt="בריאות"><div class="icon-label">בריאות</div></div>
-    <div class="icon-option" data-value="car"><img src="https://img.icons8.com/ios/452/car.png" alt="רכב"><div class="icon-label">רכב</div></div>
-    <div class="icon-option" data-value="book"><img src="https://img.icons8.com/ios/452/book.png" alt="לימודים"><div class="icon-label">לימודים</div></div>
-    <div class="icon-option" data-value="utensils"><img src="https://img.icons8.com/ios/452/utensils.png" alt="אוכל"><div class="icon-label">אוכל</div></div>
-    <div class="icon-option" data-value="dumbbell"><img src="https://img.icons8.com/ios/452/dumbbell.png" alt="ספורט"><div class="icon-label">ספורט</div></div>
-    <div class="icon-option" data-value="other" id="otherBtn"><img src="https://img.icons8.com/ios/452/ellipsis-h.png" alt="עוד"><div class="icon-label">עוד</div></div>
+  <!-- אייקונים נוספים (מתרחבים בלחיצה על "עוד") -->
+  <div class="icon-option hidden-icon" data-value="shopping"><img src="https://img.icons8.com/ios/452/shopping-cart.png" alt="קניות"><div class="icon-label">קניות</div></div>
+  <div class="icon-option hidden-icon" data-value="travel"><img src="https://img.icons8.com/ios/452/airport.png" alt="נסיעות"><div class="icon-label">נסיעות</div></div>
+  <div class="icon-option hidden-icon" data-value="pet"><img src="https://img.icons8.com/ios/452/pet-commands-train.png" alt="חיות מחמד"><div class="icon-label">חיות</div></div>
+  <div class="icon-option hidden-icon" data-value="baby"><img src="https://img.icons8.com/ios/452/baby.png" alt="תינוק"><div class="icon-label">תינוק</div></div>
+  <div class="icon-option hidden-icon" data-value="call"><img src="https://img.icons8.com/ios/452/phone.png" alt="שיחות"><div class="icon-label">שיחות</div></div>
+  <div class="icon-option hidden-icon" data-value="cleaning"><img src="https://img.icons8.com/ios/452/broom.png" alt="ניקיון"><div class="icon-label">ניקיון</div></div>
+  <div class="icon-option hidden-icon" data-value="medication"><img src="https://img.icons8.com/ios/452/pill.png" alt="תרופות"><div class="icon-label">תרופות</div></div>
+  <div class="icon-option hidden-icon" data-value="gift"><img src="https://img.icons8.com/ios/452/gift.png" alt="מתנות"><div class="icon-label">מתנות</div></div>
+  <div class="icon-option hidden-icon" data-value="camera"><img src="https://img.icons8.com/ios/452/camera.png" alt="צילום"><div class="icon-label">צילום</div></div>
+  <div class="icon-option hidden-icon" data-value="paint"><img src="https://img.icons8.com/ios/452/paint-palette.png" alt="אומנות"><div class="icon-label">אומנות</div></div>
+  <div class="icon-option hidden-icon" data-value="music"><img src="https://img.icons8.com/ios/452/musical-notes.png" alt="מוזיקה"><div class="icon-label">מוזיקה</div></div>
+  <div class="icon-option hidden-icon" data-value="video"><img src="https://img.icons8.com/ios/452/video.png" alt="סרטונים"><div class="icon-label">סרטונים</div></div>
+  <div class="icon-option hidden-icon" data-value="party"><img src="https://img.icons8.com/ios/452/party-baloons.png" alt="מסיבה"><div class="icon-label">מסיבה</div></div>
+  <div class="icon-option hidden-icon" data-value="game"><img src="https://img.icons8.com/ios/452/controller.png" alt="משחקים"><div class="icon-label">משחקים</div></div>
+  <div class="icon-option hidden-icon" data-value="tools"><img src="https://img.icons8.com/ios/452/tools.png" alt="תחזוקה"><div class="icon-label">תחזוקה</div></div>
+  <div class="icon-option hidden-icon" data-value="email"><img src="https://img.icons8.com/ios/452/email.png" alt="מיילים"><div class="icon-label">מיילים</div></div>
+  <div class="icon-option hidden-icon" data-value="alarm"><img src="https://img.icons8.com/ios/452/alarm.png" alt="תזכורת"><div class="icon-label">תזכורת</div></div>
+  <div class="icon-option hidden-icon" data-value="donate"><img src="https://img.icons8.com/ios/452/charity.png" alt="תרומה"><div class="icon-label">תרומה</div></div>
+  <div class="icon-option hidden-icon" data-value="nature"><img src="https://img.icons8.com/ios/452/forest.png" alt="טבע"><div class="icon-label">טבע</div></div>
+</div>
 
-<!-- אייקונים נוספים (מתרחבים בלחיצה על "עוד") -->
-<div class="icon-option hidden-icon" data-value="shopping"><img src="https://img.icons8.com/ios/452/shopping-cart.png" alt="קניות"><div class="icon-label">קניות</div></div>
-<div class="icon-option hidden-icon" data-value="travel"><img src="https://img.icons8.com/ios/452/airport.png" alt="נסיעות"><div class="icon-label">נסיעות</div></div>
-<div class="icon-option hidden-icon" data-value="pet"><img src="https://img.icons8.com/ios/452/pet-commands-train.png" alt="חיות מחמד"><div class="icon-label">חיות</div></div>
-<div class="icon-option hidden-icon" data-value="baby"><img src="https://img.icons8.com/ios/452/baby.png" alt="תינוק"><div class="icon-label">תינוק</div></div>
-<div class="icon-option hidden-icon" data-value="call"><img src="https://img.icons8.com/ios/452/phone.png" alt="שיחות"><div class="icon-label">שיחות</div></div>
-<div class="icon-option hidden-icon" data-value="cleaning"><img src="https://img.icons8.com/ios/452/broom.png" alt="ניקיון"><div class="icon-label">ניקיון</div></div>
-<div class="icon-option hidden-icon" data-value="medication"><img src="https://img.icons8.com/ios/452/pill.png" alt="תרופות"><div class="icon-label">תרופות</div></div>
-<div class="icon-option hidden-icon" data-value="gift"><img src="https://img.icons8.com/ios/452/gift.png" alt="מתנות"><div class="icon-label">מתנות</div></div>
-<div class="icon-option hidden-icon" data-value="camera"><img src="https://img.icons8.com/ios/452/camera.png" alt="צילום"><div class="icon-label">צילום</div></div>
-<div class="icon-option hidden-icon" data-value="paint"><img src="https://img.icons8.com/ios/452/paint-palette.png" alt="אומנות"><div class="icon-label">אומנות</div></div>
-<div class="icon-option hidden-icon" data-value="music"><img src="https://img.icons8.com/ios/452/musical-notes.png" alt="מוזיקה"><div class="icon-label">מוזיקה</div></div>
-<div class="icon-option hidden-icon" data-value="video"><img src="https://img.icons8.com/ios/452/video.png" alt="סרטונים"><div class="icon-label">סרטונים</div></div>
-<div class="icon-option hidden-icon" data-value="party"><img src="https://img.icons8.com/ios/452/party-baloons.png" alt="מסיבה"><div class="icon-label">מסיבה</div></div>
-<div class="icon-option hidden-icon" data-value="game"><img src="https://img.icons8.com/ios/452/controller.png" alt="משחקים"><div class="icon-label">משחקים</div></div>
-<div class="icon-option hidden-icon" data-value="tools"><img src="https://img.icons8.com/ios/452/tools.png" alt="תחזוקה"><div class="icon-label">תחזוקה</div></div>
-<div class="icon-option hidden-icon" data-value="email"><img src="https://img.icons8.com/ios/452/email.png" alt="מיילים"><div class="icon-label">מיילים</div></div>
-<div class="icon-option hidden-icon" data-value="alarm"><img src="https://img.icons8.com/ios/452/alarm.png" alt="תזכורת"><div class="icon-label">תזכורת</div></div>
-<div class="icon-option hidden-icon" data-value="donate"><img src="https://img.icons8.com/ios/452/charity.png" alt="תרומה"><div class="icon-label">תרומה</div></div>
-<div class="icon-option hidden-icon" data-value="nature"><img src="https://img.icons8.com/ios/452/forest.png" alt="טבע"><div class="icon-label">טבע</div></div>
-
-
-
-  <script>
-const iconLinks = {
-  "home": "https://img.icons8.com/ios/452/home.png",
-  "briefcase": "https://img.icons8.com/ios/452/briefcase.png",
-  "users": "https://img.icons8.com/ios/452/user-group-man-man.png",
-   "finance": "https://img.icons8.com/ios/452/receive-cash.png"
-  "heartbeat": "https://img.icons8.com/ios/452/hospital.png",
-  "car": "https://img.icons8.com/ios/452/car.png",
-  "book": "https://img.icons8.com/ios/452/book.png",
-  "utensils": "https://img.icons8.com/ios/452/hamburger.png",
-  "dumbbell": "https://img.icons8.com/ios/452/dumbbell.png",
-  "other": "https://img.icons8.com/ios/452/chevron-down.png",
-  "calendar-alt": "https://img.icons8.com/ios/452/calendar.png",
-  "clock": "https://img.icons8.com/ios/452/clock.png",
-  "lightbulb": "https://img.icons8.com/ios/452/idea.png",
-  "shopping": "https://img.icons8.com/ios/452/shopping-cart.png",
-  "travel": "https://img.icons8.com/ios/452/airport.png",
-  "pet": "https://img.icons8.com/ios/452/pet-commands-train.png",
-  "baby": "https://img.icons8.com/ios/452/baby.png",
-  "call": "https://img.icons8.com/ios/452/phone.png",
-  "cleaning": "https://img.icons8.com/ios/452/broom.png",
-  "medication": "https://img.icons8.com/ios/452/pill.png",
-  "gift": "https://img.icons8.com/ios/452/gift.png",
-  "camera": "https://img.icons8.com/ios/452/camera.png",
-  "paint": "https://img.icons8.com/ios/452/paint-palette.png",
-  "music": "https://img.icons8.com/ios/452/musical-notes.png",
-  "video": "https://img.icons8.com/ios/452/video.png",
-  "party": "https://img.icons8.com/ios/452/party-baloons.png",
-  "game": "https://img.icons8.com/ios/452/controller.png",
-  "tools": "https://img.icons8.com/ios/452/tools.png",
-  "email": "https://img.icons8.com/ios/452/email.png",
-  "alarm": "https://img.icons8.com/ios/452/alarm.png",
-  "donate": "https://img.icons8.com/ios/452/charity.png",
-  "nature": "https://img.icons8.com/ios/452/forest.png",
- 
-};
-
-
-    const allIcons = document.querySelectorAll('.icon-option');
-    const otherBtn = document.getElementById('otherBtn');
-    const hiddenIcons = document.querySelectorAll('.hidden-icon');
-
-    allIcons.forEach(icon => {
-      icon.addEventListener('click', () => {
-        const selected = icon.getAttribute('data-value');
-
-        if (selected === 'other') {
-          hiddenIcons.forEach(icon => {
-            icon.style.display = (icon.style.display === "flex") ? "none" : "flex";
-          });
-          return;
-        }
-
-        allIcons.forEach(i => i.classList.remove('selected'));
-        icon.classList.add('selected');
-
-        const iconURL = iconLinks[selected] || "";
-        console.log("Selected icon:", selected);
-        console.log("Icon URL:", iconURL);
-        window.parent.postMessage(iconURL, "*");
-        alert("כתובת האייקון: " + iconURL);
-      });
-    });
-  </script>
+<script>
+  // פונקציה להרחבת הצפיה באייקונים הנוספים
+  document.getElementById('otherBtn').addEventListener('click', function() {
+    document.getElementById('iconGrid').classList.toggle('expanded');
+  });
+</script>
 
 </body>
 </html>
