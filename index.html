@@ -138,19 +138,22 @@
       "graduation-cap": "https://img.icons8.com/ios/452/graduation-cap.png",
       "cloud": "https://img.icons8.com/ios/452/cloud.png",
       "shopping-bag": "https://img.icons8.com/ios/452/shopping-bag.png",
+      "palette": "https://img.icons8.com/ios/452/paint-palette.png",
       "book-open": "https://img.icons8.com/ios/452/book-open.png"
     };
 
-    document.querySelectorAll('.icon-option').forEach(option => {
-      option.addEventListener('click', function() {
-        this.classList.toggle('selected');
-      });
-    });
-
-    document.getElementById('otherBtn').addEventListener('click', function() {
-      const hiddenIcons = document.querySelectorAll('.hidden-icon');
-      hiddenIcons.forEach(icon => {
-        icon.classList.toggle('hidden-icon');
+    document.querySelectorAll('.icon-option').forEach(item => {
+      item.addEventListener('click', () => {
+        // הסתר את כל האייקונים הנסתרים
+        document.querySelectorAll('.hidden-icon').forEach(hiddenItem => {
+          hiddenItem.classList.remove('hidden-icon');
+        });
+        // הוסף/הסר את הקטגוריה שנבחרה
+        if (item.classList.contains('selected')) {
+          item.classList.remove('selected');
+        } else {
+          item.classList.add('selected');
+        }
       });
     });
   </script>
