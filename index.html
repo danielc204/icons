@@ -175,8 +175,14 @@
       allIcons.forEach(i => i.classList.remove('selected'));
       icon.classList.add('selected');
 
-      const iconURL = iconLinks[selected] || "";
-      sendMessageToThunkable(iconURL);
+    const iconURL = iconLinks[selected] || "";
+
+if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+  window.ReactNativeWebView.postMessage(iconURL);
+} else {
+  window.parent.postMessage(iconURL, "*");
+}
+
     });
   });
 </script>
