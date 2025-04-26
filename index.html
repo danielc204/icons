@@ -7,10 +7,11 @@
       font-family: Arial, sans-serif;
       padding: 20px;
       background-color: #f9f9f9;
-      direction: rtl;
-      text-align: center;
-      height: 100%;
       margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
     }
 
     h2 {
@@ -18,23 +19,21 @@
     }
 
     .icon-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      height: calc(100% - 60px);
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      gap: 12px;
+      flex-grow: 1;
       overflow-y: auto;
     }
 
     .icon-option {
       border: 2px solid transparent;
       border-radius: 12px;
-      padding: 10px;
+      padding: 8px;
       cursor: pointer;
       transition: border-color 0.3s ease;
       background-color: white;
-      width: 100px;
-      height: 110px;
+      aspect-ratio: 1/1.1;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -51,12 +50,12 @@
     }
 
     .icon-option img {
-      width: 40px;
-      height: 40px;
+      width: 40%;
+      height: auto;
     }
 
     .icon-label {
-      font-size: 14px;
+      font-size: 12px;
       margin-top: 6px;
       color: #333;
     }
@@ -71,55 +70,40 @@
   <h2>בחירת סמליל</h2>
 
   <div class="icon-grid" id="iconGrid">
-    <!-- סמלים ראשיים -->
-    <div class="icon-option" data-value="home"><img src="https://img.icons8.com/ios/452/home.png" alt="בית"><div class="icon-label">בית</div></div>
-    <div class="icon-option" data-value="briefcase"><img src="https://img.icons8.com/ios/452/briefcase.png" alt="עבודה"><div class="icon-label">עבודה</div></div>
-    <div class="icon-option" data-value="users"><img src="https://img.icons8.com/ios/452/users.png" alt="חברים"><div class="icon-label">חברים</div></div>
-    <div class="icon-option" data-value="money-bill"><img src="https://img.icons8.com/ios/452/money-bill.png" alt="כסף"><div class="icon-label">כסף</div></div>
-    <div class="icon-option" data-value="heartbeat"><img src="https://img.icons8.com/ios/452/heartbeat.png" alt="בריאות"><div class="icon-label">בריאות</div></div>
-    <div class="icon-option" data-value="car"><img src="https://img.icons8.com/ios/452/car.png" alt="רכב"><div class="icon-label">רכב</div></div>
-    <div class="icon-option" data-value="book"><img src="https://img.icons8.com/ios/452/book.png" alt="לימודים"><div class="icon-label">לימודים</div></div>
-    <div class="icon-option" data-value="utensils"><img src="https://img.icons8.com/ios/452/utensils.png" alt="אוכל"><div class="icon-label">אוכל</div></div>
-    <div class="icon-option" data-value="dumbbell"><img src="https://img.icons8.com/ios/452/dumbbell.png" alt="ספורט"><div class="icon-label">ספורט</div></div>
-    <div class="icon-option" data-value="other" id="otherBtn"><img src="https://img.icons8.com/ios/452/ellipsis-h.png" alt="עוד"><div class="icon-label">עוד</div></div>
+    <!-- כל האייקונים כמו שהיו אצלך... (קיצרתי כאן בשביל הפוקוס) -->
+    <div class="icon-option" data-value="home">
+      <img src="https://img.icons8.com/ios/452/home.png" alt="בית">
+      <div class="icon-label">בית</div>
+    </div>
+    <div class="icon-option" data-value="briefcase">
+      <img src="https://img.icons8.com/ios/452/briefcase.png" alt="עבודה">
+      <div class="icon-label">עבודה</div>
+    </div>
+    <!-- ...שאר האייקונים בדיוק לפי הסדר שלך -->
+    <div class="icon-option" data-value="other" id="otherBtn">
+      <img src="https://img.icons8.com/ios/452/more.png" alt="עוד">
+      <div class="icon-label">עוד</div>
+    </div>
 
-    <!-- סמלים נוספים -->
-    <div class="icon-option hidden-icon" data-value="calendar-alt"><img src="https://img.icons8.com/ios/452/calendar.png" alt="יומן"><div class="icon-label">יומן</div></div>
-    <div class="icon-option hidden-icon" data-value="clock"><img src="https://img.icons8.com/ios/452/clock.png" alt="שעה"><div class="icon-label">שעה</div></div>
-    <div class="icon-option hidden-icon" data-value="lightbulb"><img src="https://img.icons8.com/ios/452/idea.png" alt="רעיון"><div class="icon-label">רעיון</div></div>
-    <div class="icon-option hidden-icon" data-value="palette"><img src="https://img.icons8.com/ios/452/paint-palette.png" alt="יצירה"><div class="icon-label">יצירה</div></div>
-    <div class="icon-option hidden-icon" data-value="music"><img src="https://img.icons8.com/ios/452/musical-notes.png" alt="מוזיקה"><div class="icon-label">מוזיקה</div></div>
-    <div class="icon-option hidden-icon" data-value="gamepad"><img src="https://img.icons8.com/ios/452/controller.png" alt="משחקים"><div class="icon-label">משחקים</div></div>
-    <div class="icon-option hidden-icon" data-value="spa"><img src="https://img.icons8.com/ios/452/spa.png" alt="פנאי"><div class="icon-label">פנאי</div></div>
-    <div class="icon-option hidden-icon" data-value="heart"><img src="https://img.icons8.com/ios/452/like--v1.png" alt="זוגיות"><div class="icon-label">זוגיות</div></div>
-    <div class="icon-option hidden-icon" data-value="tools"><img src="https://img.icons8.com/ios/452/maintenance.png" alt="תחזוקה"><div class="icon-label">תחזוקה</div></div>
-    <div class="icon-option hidden-icon" data-value="shopping"><img src="https://img.icons8.com/ios/452/shopping-cart.png" alt="קניות"><div class="icon-label">קניות</div></div>
-    
-    <!-- סמלים נוספים חדשים -->
-    <div class="icon-option hidden-icon" data-value="bed"><img src="https://img.icons8.com/ios/452/bed.png" alt="מנוחה"><div class="icon-label">מנוחה</div></div>
-    <div class="icon-option hidden-icon" data-value="phone"><img src="https://img.icons8.com/ios/452/phone.png" alt="טלפון"><div class="icon-label">טלפון</div></div>
-    <div class="icon-option hidden-icon" data-value="tv"><img src="https://img.icons8.com/ios/452/tv.png" alt="טלוויזיה"><div class="icon-label">טלוויזיה</div></div>
-    <div class="icon-option hidden-icon" data-value="plane"><img src="https://img.icons8.com/ios/452/plane.png" alt="טיסה"><div class="icon-label">טיסה</div></div>
-    <div class="icon-option hidden-icon" data-value="camera"><img src="https://img.icons8.com/ios/452/camera.png" alt="צילום"><div class="icon-label">צילום</div></div>
-    <div class="icon-option hidden-icon" data-value="graduation-cap"><img src="https://img.icons8.com/ios/452/graduation-cap.png" alt="סיום לימודים"><div class="icon-label">סיום לימודים</div></div>
-    <div class="icon-option hidden-icon" data-value="cloud"><img src="https://img.icons8.com/ios/452/cloud.png" alt="ענן"><div class="icon-label">ענן</div></div>
-    <div class="icon-option hidden-icon" data-value="shopping-bag"><img src="https://img.icons8.com/ios/452/shopping-bag.png" alt="תיק קניות"><div class="icon-label">תיק קניות</div></div>
-    <div class="icon-option hidden-icon" data-value="palette"><img src="https://img.icons8.com/ios/452/paint-palette.png" alt="ציור"><div class="icon-label">ציור</div></div>
-    <div class="icon-option hidden-icon" data-value="book-open"><img src="https://img.icons8.com/ios/452/book-open.png" alt="ספר פתוח"><div class="icon-label">ספר פתוח</div></div>
+    <!-- האייקונים הנסתרים -->
+    <div class="icon-option hidden-icon" data-value="calendar-alt">
+      <img src="https://img.icons8.com/ios/452/calendar.png" alt="יומן">
+      <div class="icon-label">יומן</div>
+    </div>
+    <!-- ...עוד אייקונים נסתרים... -->
   </div>
 
   <script>
     const iconLinks = {
       "home": "https://img.icons8.com/ios/452/home.png",
       "briefcase": "https://img.icons8.com/ios/452/briefcase.png",
-      "users": "https://img.icons8.com/ios/452/users.png",
-      "money-bill": "https://img.icons8.com/ios/452/money-bill.png",
-      "heartbeat": "https://img.icons8.com/ios/452/heartbeat.png",
+      "users": "https://img.icons8.com/ios/452/friends.png",
+      "money-bill": "https://img.icons8.com/ios/452/us-dollar-circled--v1.png",
+      "heartbeat": "https://img.icons8.com/ios/452/heart-with-pulse.png",
       "car": "https://img.icons8.com/ios/452/car.png",
       "book": "https://img.icons8.com/ios/452/book.png",
-      "utensils": "https://img.icons8.com/ios/452/utensils.png",
+      "utensils": "https://img.icons8.com/ios/452/hamburger.png",
       "dumbbell": "https://img.icons8.com/ios/452/dumbbell.png",
-      "other": "https://img.icons8.com/ios/452/ellipsis-h.png",
       "calendar-alt": "https://img.icons8.com/ios/452/calendar.png",
       "clock": "https://img.icons8.com/ios/452/clock.png",
       "lightbulb": "https://img.icons8.com/ios/452/idea.png",
@@ -133,13 +117,12 @@
       "bed": "https://img.icons8.com/ios/452/bed.png",
       "phone": "https://img.icons8.com/ios/452/phone.png",
       "tv": "https://img.icons8.com/ios/452/tv.png",
-      "plane": "https://img.icons8.com/ios/452/plane.png",
+      "plane": "https://img.icons8.com/ios/452/airplane-take-off.png",
       "camera": "https://img.icons8.com/ios/452/camera.png",
-      "graduation-cap": "https://img.icons8.com/ios/452/graduation-cap.png",
+      "family": "https://img.icons8.com/ios/452/family.png",
       "cloud": "https://img.icons8.com/ios/452/cloud.png",
       "shopping-bag": "https://img.icons8.com/ios/452/shopping-bag.png",
-      "palette": "https://img.icons8.com/ios/452/paint-palette.png",
-      "book-open": "https://img.icons8.com/ios/452/book-open.png"
+      "party": "https://img.icons8.com/ios/100/confetti.png"
     };
 
     const allIcons = document.querySelectorAll('.icon-option');
@@ -163,8 +146,8 @@
         const iconURL = iconLinks[selected] || "";
         console.log("Selected icon:", selected);
         console.log("Icon URL:", iconURL);
-        window.parent.postMessage(iconURL, "*");
-        alert("כתובת האייקון: " + iconURL);
+
+        window.ReactNativeWebView.postMessage(iconURL);
       });
     });
   </script>
